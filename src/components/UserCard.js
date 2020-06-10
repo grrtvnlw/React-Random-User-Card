@@ -6,7 +6,8 @@ export default class UserCard extends Component {
     super(props);
 
     this.state = {
-      isVisible: false
+      isVisible: false,
+      imageUrl: './logo512.png'
     }
   }
 
@@ -16,20 +17,22 @@ export default class UserCard extends Component {
       .then(data => {
         const user = data.results[0];
         console.log(user);
-        this.setState({ imageUrl: user.picture.large });
-        this.setState({ userName: `Hi, my name is ${user.name.first} ${user.name.last}` });
-        this.setState({ userEmail: user.email });
-        this.setState({ userPhone: user.phone });
-        this.setState({ userState: `Party at my place in ${user.location.country}!` });
-        this.setState({ userAddress: `${user.location.street.number} ${user.location.street.name}, ${user.location.city} ${user.location.state}` }); 
-        this.setState({ userBirthday: user.dob.date });
-        this.setState({ userAge: user.dob.age })
+        this.setState({ 
+          imageUrl: user.picture.large,
+          userName: `Hi, my name is ${user.name.first} ${user.name.last}`,
+          userEmail: user.email,
+          userPhone: user.phone,
+          userState: `Party at my place in ${user.location.country}!`,
+          userAddress: `${user.location.street.number} ${user.location.street.name}, ${user.location.city} ${user.location.state}`, 
+          userBirthday: user.dob.date,
+          userAge: user.dob.age,
+          isVisible: true,
+        })
       })
   }
 
   handleClick = () => {
     this.getRandomCard();
-    this.setState({ isVisible: true})
   }
 
   render() {
