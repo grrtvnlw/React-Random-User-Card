@@ -10,7 +10,14 @@ function App() {
         <h1>Random User Card</h1>
       </header>
       <main>
-        <UserCard />
+        <div>
+          <UserCard />
+          <UserCard />
+        </div>
+        <div>
+          <UserCard />
+          <UserCard />
+        </div>
       </main>
     </div>
   );

@@ -10,7 +10,6 @@
   padding: 10px;
   border-radius: 5px;
   border: 1px solid gray;
-  /* background-color: #999; */
 }
 
 .visible {
@@ -27,7 +26,7 @@
 
 .imageDiv {
   width: 100%;
-  background-color: #999;
+  background-color: lightgray;
   border-radius: 5px;
 }
 

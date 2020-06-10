@@ -15,11 +15,15 @@ export default class UserCard extends Component {
       .then(res => res.json())
       .then(data => {
         const user = data.results[0];
-        console.log(user)
-        this.setState({ imageUrl: user.picture.large })
-        this.setState({ userName: `Hi, my name is ${user.name.first} ${user.name.last}` })
-        this.setState({ userEmail: `Email me: ${user.email}` })
-        this.setState({ userPhone: `Holla at me: ${user.phone}` })
+        console.log(user);
+        this.setState({ imageUrl: user.picture.large });
+        this.setState({ userName: `Hi, my name is ${user.name.first} ${user.name.last}` });
+        this.setState({ userEmail: user.email });
+        this.setState({ userPhone: user.phone });
+        this.setState({ userState: `Party at my place in ${user.location.country}!` });
+        this.setState({ userAddress: `${user.location.street.number} ${user.location.street.name}, ${user.location.city} ${user.location.state}` }); 
+        this.setState({ userBirthday: user.dob.date });
+        this.setState({ userAge: user.dob.age })
       })
   }
 
@@ -43,9 +47,12 @@ export default class UserCard extends Component {
             <img className="userPicture" src={ this.state.imageUrl } alt="" />
           </div>
           <div className="contentDiv">
-            <h4>{ this.state.userName }</h4>
-            <p>{ this.state.userEmail }</p>
-            <p>{ this.state.userPhone }</p>
+            <h3>{ this.state.userName }</h3>
+            <h4>{ this.state.userState }</h4>
+            <p>{ this.state.userAddress }</p>
+            <p><b>Email me:</b> { this.state.userEmail }</p>
+            <p><b>Holla:</b> { this.state.userPhone }</p>
+            <p>I am { this.state.userAge} and my birthday is { this.state.userBirthday }.</p>
           </div>
         </div>
         <div>
